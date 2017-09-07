@@ -1,0 +1,13 @@
+[Unit]
+Description=Wait until we're connected to the Internet
+After=network.target
+
+[Service]
+Type=notify
+User=nobody
+ExecStart=/usr/bin/check-204 -f /run/wait-204/204.cond
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=multi-user.target
+Also=wait-204-restart.service

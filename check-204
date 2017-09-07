@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+
+import os
+import stat
+import signal
+import urllib.request
+
+import systemd.daemon as sd
+
+URL = 'http://g.cn/generate_204'
+FIFO = '/tmp/network.cond'
+
+class Check204:
+  def __init__(self, url, fifo):
+    self.url = url
+    self.fifo = fifo
+    try:
+      st = os.stat(fifo)
+      if not stat.S_ISFIFO(st.st_mode):
+        raise TypeError('file exists and is not a fifo: %r' % fifo)
+    except FileNotFoundError:
+      os.mkfifo(fifo)
+
+  def ok(self):
+    sd.notify('READY=1')
+    # may block here too
+    os.open(self.fifo, os.O_WRONLY)
+    while True:
+      signal.pause()
+
+  def detect(self):
+    while True:
+      try:
+        r = urllib.request.urlopen(self.url)
+        r.read()
+        if r.status == 204:
+          break
+      except Exception:
+        pass
+
+  def run(self):
+    self.detect()
+    self.ok()
+
+if __name__ == '__main__':
+  import argparse
+  parser = argparse.ArgumentParser(
+    description = 'signal when we are connected to the Internet',
+  )
+  parser.add_argument('-u', '--url', default=URL,
+                      help='204 URL (must be HTTP)')
+  parser.add_argument('-f', '--fifo', default=FIFO,
+                      help='fifo file to use as a signal')
+  args = parser.parse_args()
+
+  checker = Check204(args.url, args.fifo)
+  checker.run()

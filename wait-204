@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+
+FIFO = '/tmp/network.cond'
+
+def wait_on(fifo):
+  if not os.path.exists(fifo):
+    return 'check_204 program is not running on %s' % fifo
+
+  fd = os.open(fifo, os.O_RDONLY)
+  os.close(fd)
+
+if __name__ == '__main__':
+  import argparse
+  parser = argparse.ArgumentParser(
+    description = 'wait until we are connected to the Internet',
+  )
+  parser.add_argument('-f', '--fifo', default=FIFO,
+                      help='fifo file to use as a signal')
+  args = parser.parse_args()
+  sys.exit(wait_on(args.fifo))

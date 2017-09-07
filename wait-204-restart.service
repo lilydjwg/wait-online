@@ -1,0 +1,12 @@
+[Unit]
+Description=Restart wait-204 on resume
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStop=/usr/bin/systemctl try-restart wait-204.service
+
+[Install]
+WantedBy=sleep.target
