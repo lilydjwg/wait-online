@@ -17,7 +17,7 @@ source=(
 sha1sums=('2ed9dcf07dd9a427a62e151ae4ee34c696e53d2c'
           'b0d83c0c046764331a6625d3027f3102aa632412'
           '3f861ed5cf7bd2820dee66f6b575852418deeea0'
-          '8707500e28807069579f9740cad675985f5dd69b'
+          '71bb1de870639fe3dc589d4deb000a3072c568de'
           '4ea5880b28933efe01f0461916ddef0f01d23efa')
 
 build() {
