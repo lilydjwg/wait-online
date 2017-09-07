@@ -23,13 +23,14 @@ class Check204:
       os.mkfifo(fifo)
 
   def ok(self):
-    sd.notify('READY=1')
+    sd.notify('READY=1\nSTATUS=We are connected')
     # may block here too
     os.open(self.fifo, os.O_WRONLY)
     while True:
       signal.pause()
 
   def detect(self):
+    sd.notify('STATUS=Checking for Internet...')
     while True:
       try:
         r = urllib.request.urlopen(self.url)

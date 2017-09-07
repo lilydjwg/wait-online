@@ -9,5 +9,5 @@ ExecStart=/usr/bin/check-204
 TimeoutStartSec=infinity
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=network-online.target
 Also=wait-204-restart.service
