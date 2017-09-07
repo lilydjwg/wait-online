@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=notify
 User=nobody
-ExecStart=/usr/bin/check-204 -f /run/wait-204/204.cond
+ExecStart=/usr/bin/check-204
 TimeoutStartSec=infinity
 
 [Install]

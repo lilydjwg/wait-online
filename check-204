@@ -9,7 +9,7 @@ import time
 import systemd.daemon as sd
 
 URL = 'http://g.cn/generate_204'
-FIFO = '/tmp/network.cond'
+FIFO = '/run/wait-204/204.cond'
 
 class Check204:
   def __init__(self, url, fifo):

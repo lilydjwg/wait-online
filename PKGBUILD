@@ -14,10 +14,10 @@ source=(
   wait-204-restart.service
 )
 
-sha1sums=('ac7989bd662090b1ab35138a1e141290b83cddce'
-          '03acb327394e587ecf4bcf0da33b1c875741e1f9'
+sha1sums=('0baf1afe964cc117987cc9fd609ecb64ba4f7d23'
+          'f619942aab05e39a783917c2eaf25d0a16937440'
           'b09328bb02cb3d7319d9e5e1555c3f74fc06fe77'
-          'd65c00d77621567bc79039024500782de3c1c57d'
+          'd14cf59303b94bd4b92e12411b012681ab0c3033'
           '86cd625d209a78e6397c9ebefc2c793524c3ebfa')
 
 build() {
