@@ -10,4 +10,4 @@ TimeoutStartSec=infinity
 
 [Install]
 WantedBy=network-online.target
-Also=wait-online-onresume.service
+Also=wait-online-restart.service

@@ -3,7 +3,7 @@
 import os
 import sys
 
-FIFO = '/run/wait-204/204.cond'
+FIFO = '/run/wait-online/204.cond'
 
 def wait_on(fifo):
   if not os.path.exists(fifo):
