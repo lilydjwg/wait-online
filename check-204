@@ -4,6 +4,7 @@ import os
 import stat
 import signal
 import urllib.request
+import time
 
 import systemd.daemon as sd
 
@@ -35,6 +36,7 @@ class Check204:
         r.read()
         if r.status == 204:
           break
+        time.sleep(1)
       except Exception:
         pass
 
