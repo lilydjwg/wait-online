@@ -16,7 +16,7 @@ This service will be ordered before `network-online.target`, so your services ne
 
 ## Command line usage
 
-`check-online` will check if we are connected to the Internet.
+`check-online` will check if we are connected to the Internet and notify `wait-online`. This is the service script.
 
-`wait-online` will wait until we are connected to the Internet.
+`wait-online` will wait until we are connected to the Internet (need `check-online` running).
 
