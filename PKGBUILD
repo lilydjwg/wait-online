@@ -1,7 +1,7 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=wait-online
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="tools to wait for Internet (204 response)"
 arch=('any')
 license=("GPLv3")
@@ -31,4 +31,6 @@ package() {
   install -Dm644 wait-online.service "${pkgdir}/usr/lib/systemd/system/wait-online.service"
   install -Dm644 wait-online-onresume.service "${pkgdir}/usr/lib/systemd/system/wait-online-onresume.service"
   install -Dm644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  mkdir -p "${pkgdir}"/usr/lib/systemd/system/multi-user.target.wants
+  ln -s ../network-online.target "${pkgdir}"/usr/lib/systemd/system/multi-user.target.wants
 }
