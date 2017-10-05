@@ -31,15 +31,21 @@ class Check204:
 
   def detect(self):
     sd.notify('STATUS=Checking for Internet...')
+    last = time.time()
+
     while True:
       try:
         r = urllib.request.urlopen(self.url)
         r.read()
         if r.status == 204:
           break
-        time.sleep(1)
       except Exception:
         pass
+
+      now = time.time()
+      if now - last < 3:
+        time.sleep(now - last)
+      last = now
 
   def run(self):
     self.detect()
