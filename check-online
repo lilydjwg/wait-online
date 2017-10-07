@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import stat
 import signal
 import urllib.request
@@ -39,8 +40,8 @@ class Check204:
         r.read()
         if r.status == 204:
           break
-      except Exception:
-        pass
+      except Exception as e:
+        print(e, file=sys.stderr)
 
       now = time.time()
       if now - last < 3:
