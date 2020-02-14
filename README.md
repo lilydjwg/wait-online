@@ -14,6 +14,8 @@ Run `sudo systemctl enable --now wait-online` after installation to activate.
 
 This service will be ordered before `network-online.target`, so your services needing Internet access will be started at the correct time.
 
+There is also a `wait-online-onresume.service` that you can enable for restarting `wait-online.service` after resuming from a sleep so that the `wait-online` command works well.
+
 ## Command line usage
 
 `check-online` will check if we are connected to the Internet and notify `wait-online`. This is the service script.
