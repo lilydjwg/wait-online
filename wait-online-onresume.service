@@ -7,7 +7,7 @@ StopWhenUnneeded=yes
 Type=oneshot
 RemainAfterExit=yes
 ExecStop=/usr/bin/systemctl try-restart wait-online.service
-TimeoutStartSec=infinity
+TimeoutStopSec=infinity
 
 [Install]
 WantedBy=sleep.target
