@@ -45,7 +45,7 @@ class Check204:
 
       now = time.time()
       if now - last < 3:
-        time.sleep(now - last)
+        time.sleep(3)
       last = now
 
   def run(self):
