@@ -1,6 +1,8 @@
 [Unit]
 Description=Wait until we're connected to the Internet
 After=network.target
+Before=sleep.target
+Conflicts=sleep.target
 
 [Service]
 Type=notify
